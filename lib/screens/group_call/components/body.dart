@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_call_app/constant.dart';
+import 'package:flutter_call_app/screens/dial_screen/components/dial_user_pic.dart';
+import 'package:flutter_call_app/screens/group_call/components/user_calling_card.dart';
+import 'package:flutter_call_app/size_config.dart';
+
+class Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: demoData.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 0.53, crossAxisCount: 2),
+        itemBuilder: (context, index) => demoData[index]["isCalling"]
+            ? UserCallingCard(
+                image: demoData[index]["image"], name: demoData[index]["name"])
+            : Image.asset(demoData[index]["image"], fit: BoxFit.cover,));
+  }
+}
+
+List<Map<String, dynamic>> demoData = [
+  {
+    "isCalling": false,
+    "name": "User 1",
+    "image": "assets/images/goup_call_1.png",
+  },
+  {
+    "isCalling": true,
+    "name": "Steve jon",
+    "image": "assets/images/group_call_face_small.png",
+  },
+  {
+    "isCalling": false,
+    "name": "User 1",
+    "image": "assets/images/group_call_face_2.png",
+  },
+  {
+    "isCalling": false,
+    "name": "User 1",
+    "image": "assets/images/group_call_face_3.png",
+  },
+];
